@@ -5,6 +5,8 @@ public class Weather {
     String minTemp;
     String maxTemp;
     String link;
+    String Icon;
+    String IconPhrase;
     Weather(){};
     Weather(String date,String min,String max,String link){
         this.date = date;
@@ -42,5 +44,21 @@ public class Weather {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public String getIcon() {
+        return Icon;
+    }
+
+    public void setIcon(String icon) {
+        Icon = icon;
+    }
+
+    public String getIconPhrase() {
+        return IconPhrase;
+    }
+
+    public void setIconPhrase(String iconPhrase) {
+        IconPhrase = iconPhrase;
     }
 }

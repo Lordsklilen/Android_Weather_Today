@@ -42,7 +42,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
-                    android:text="Check 5 days Forecast" />
+                    android:text="5 days Forecast" />
             </LinearLayout>
 
             <LinearLayout
@@ -61,7 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
-                    android:text="Check 15 days Forecast" />
+                    android:text="24-Hour Historical Current Conditions" />
             </LinearLayout>
 
         </LinearLayout>
@@ -89,7 +89,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
-                    android:text="Check 1 days Forecast" />
+                    android:text="Forecast 12-hour" />
             </LinearLayout>
 
             <LinearLayout

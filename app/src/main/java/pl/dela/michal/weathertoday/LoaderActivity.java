@@ -22,14 +22,24 @@ public class LoaderActivity extends AppCompatActivity {
         Runnable r = new Runnable() {
             @Override
             public void run(){
-                goToMenu(); //<-- put your code in here.
+                goToMenu();
+            }
+        };
+        Runnable c = new Runnable() {
+            @Override
+            public void run(){
+                closeActivity();
             }
         };
 
         Handler h = new Handler();
         h.postDelayed(r, 1000);
+        h.postDelayed(c, 1100);
     }
     void goToMenu(){
         startActivity(new Intent(LoaderActivity.this, MenuActivity.class));
+    }
+    void closeActivity(){
+        finish();
     }
 }

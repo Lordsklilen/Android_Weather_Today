@@ -5,19 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoaderActivity">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
     <ImageView
         android:id="@+id/imageView24"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/loaderimg" />
-    <TextView
-        android:layout_width="204dp"
-        android:layout_height="17dp"
-        android:textColor="@android:color/white"
-        android:text="Made by MIchał Dela"
-        tools:layout_editor_absoluteX="234dp"
-        tools:layout_editor_absoluteY="531dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Made by Michał Dela"
+            android:textSize="16dp"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="15dp" />
+    </FrameLayout>
 
 
 </android.support.constraint.ConstraintLayout>

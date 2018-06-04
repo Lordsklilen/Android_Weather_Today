@@ -22,7 +22,8 @@
         android:orientation="vertical"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        tools:ignore="MissingConstraints">
 
 
 
@@ -45,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="50dp"
-                    app:srcCompat="@drawable/icon5" />
+                    app:srcCompat="@drawable/calendar5days" />
 
                 <Button
                     android:id="@+id/button5days"
@@ -53,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
                     android:background="@android:color/transparent"
-                    android:text="5 days Forecast" />
+                    android:text="@string/forecast5days" />
             </LinearLayout>
 
             <LinearLayout
@@ -67,14 +68,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="50dp"
-                    app:srcCompat="@drawable/icon15" />
+                    app:srcCompat="@drawable/history24hours" />
                 <Button
                     android:id="@+id/button15days"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
                     android:background="@android:color/transparent"
-                    android:text="24-Hour Historical Current Conditions" />
+                    android:text="@string/forecast24hourhistory" />
             </LinearLayout>
 
         </LinearLayout>
@@ -96,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="50dp"
-                    app:srcCompat="@drawable/icon1" />
+                    app:srcCompat="@drawable/calendartoday" />
 
                 <Button
                     android:id="@+id/button12hours"
@@ -104,27 +105,28 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
                     android:background="@android:color/transparent"
-                    android:text="Forecast 12-hour" />
+                    android:text="@string/forecast12hours" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
+                android:id="@+id/layoutSettings"
                 android:orientation="vertical">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="50dp"
-                    app:srcCompat="@drawable/settings" />
+                    app:srcCompat="@drawable/settingsgear" />
                 <Button
                     android:id="@+id/buttondays"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
                     android:background="@android:color/transparent"
-                    android:text="Settings" />
+                    android:text="@string/settingsButton" />
             </LinearLayout>
 
         </LinearLayout>

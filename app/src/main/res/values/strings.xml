@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">WeatherToday</string>
+    <string name="loaderInfo">Made by Michał Dela</string>
+    <string name="forecast5days">5 days Forecast</string>
+    <string name="forecast24hourhistory">24-Hour Historical Current Conditions</string>
+    <string name="forecast12hours">Forecast 12-hour</string>
+    <string name="settingsButton">Settings</string>
+    <string name="backButton">Back</string>
+    <string name="updateButton">Update</string>
+    <string name="forecastTittle">Weather conditions for </string>
+    <string name="Title24history">Weather for past 24 Hours:\n red line - temperature</string>
+    <string name="Title12forecast">Weather for 12 Hours:\n red line - temperature</string>
+    <string name="Title5daysforecast">Weather forecast for next 5 Days:\nRed line - Maximal temperature\nBlue line - Minimal temperature</string>
+    <string name="Probability">\nRain probability:\n</string>
+    <string name="ChoseLanguage">Chose language</string>
+    <string name="ChoseLanguageSummary">Chose your preferred language</string>
+    <string name="title_activity_settings">Settings</string>
 </resources>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">WeatherToday</string>
+    <string name="loaderInfo">Wykonana przez Michała Dele</string>
+    <string name="forecast5days">Prognoza na 5 dni</string>
+    <string name="forecast24hourhistory">Prognoza z minionych 24 godzin</string>
+    <string name="forecast12hours">Prognoza dokładna na 12 godzin</string>
+    <string name="settingsButton">Ustawienia</string>
+    <string name="backButton">Wróć</string>
+    <string name="updateButton">Zaktualizuj</string>
+    <string name="forecastTittle">Prognoza pogody dla </string>
+    <string name="Title24history">Prognoza z poprzednich 24 godzin:\nCzerwona linia - temperatura</string>
+    <string name="Title12forecast">Prognoza na kolejne 12 godzin\nCzerwona linia - przewidywana temperatura</string>
+    <string name="Title5daysforecast">Prognoza na kolejne 5 dni\nCzerwona linia - przewidywana maksymalna temperatura\nNiebieska linia - przewidywana minimalna temperatura</string>
+    <string name="Probability">\nPrawdopodobieństwo opadów:\n</string>
+</resources>

@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType = "centerCrop"
-            app:srcCompat="@drawable/background7" />
+            app:srcCompat="@drawable/background6" />
     </FrameLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,49 +25,55 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.90"
                 android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_weight="3">
+                    android:layout_weight="3"
+                    android:orientation="horizontal">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:layout_weight="3">
+                        android:layout_weight="3"
+                        android:orientation="vertical">
+
                         <TextView
-                            android:textSize="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Weather conditions for Zabierzów" />
+                            android:text="@string/forecastTittle"
+                            android:textSize="15dp" />
+
                         <TextView
-                            android:textSize="15dp"
-                            android:layout_weight="0.3"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Weather forecast for next 5 Days:\nRed line - Maximal temperature\nBlue line - Minimal temperature" />
+                            android:layout_weight="0.3"
+                            android:text="@string/Title5daysforecast"
+                            android:textSize="15dp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:layout_weight="6">
+                        android:layout_weight="6"
+                        android:orientation="vertical">
+
                         <Button
                             android:id="@+id/backBtn"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@android:color/transparent"
-                            android:text="Back" />
+                            android:text="@string/backButton" />
+
                         <Button
                             android:id="@+id/UpdateBtn"
-                            android:background="@android:color/transparent"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Update" />
+                            android:background="@android:color/transparent"
+                            android:text="@string/updateButton" />
                     </LinearLayout>
 
                 </LinearLayout>

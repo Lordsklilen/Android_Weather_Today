@@ -14,11 +14,11 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/loaderimg" />
+        app:srcCompat="@drawable/background8" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Made by Michał Dela"
+            android:text="@string/loaderInfo"
             android:textSize="16dp"
             android:layout_gravity="bottom|right"
             android:layout_margin="15dp" />

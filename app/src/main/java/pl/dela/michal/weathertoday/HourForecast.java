@@ -1,5 +1,6 @@
 package pl.dela.michal.weathertoday;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -34,11 +35,15 @@ public class HourForecast extends AppCompatActivity {
         setContentView(R.layout.activity_hour_forecast);
 
 
-       // URL weatherUrl = NetworkUtils.buildUrlForWeather12Hours();
-        //       // Log.i("url",weatherUrl.toString());
-        //        //Json_data = new FetchWeatherDetails().execute(weatherUrl);
-        Log.i("data:",FAKE_JSON12_HOURS);
-        parseJSON(FAKE_JSON12_HOURS);
+        SharedPreferences storage = getSharedPreferences("Data", 0);
+        String JsonData = storage.getString("12hours", "0");
+        if(JsonData.equals("0")){
+            Log.i("JSON","Error");
+        }
+        else{
+            Log.i("JSON",JsonData);
+            parseJSON(JsonData);
+        }
 
         Button clickButton = (Button) findViewById(R.id.backBtn);
         clickButton.setOnClickListener( new View.OnClickListener() {
@@ -81,8 +86,11 @@ public class HourForecast extends AppCompatActivity {
         @Override
         protected void onPostExecute(String weatherSearchResults) {
             if(weatherSearchResults != null && !weatherSearchResults.equals("")){
-                Log.i("url here",weatherSearchResults);
-                weatherArrayList = parseJSON(weatherSearchResults);
+                SharedPreferences storage = getSharedPreferences("Data", 0);
+                SharedPreferences.Editor storageEditor = storage.edit();
+                storageEditor.putString("12hours", weatherSearchResults).commit();
+                Log.i("Saved" , weatherSearchResults);
+                parseJSON((weatherSearchResults));
             }
             super.onPostExecute(weatherSearchResults);
         }
@@ -120,10 +128,7 @@ public class HourForecast extends AppCompatActivity {
             }
         }
         return null;
-
-
     }
-
     private void drawWeatherGraph(){
         GraphView graph = (GraphView) findViewById(R.id.graph);
         graph.removeAllSeries();
@@ -144,7 +149,8 @@ public class HourForecast extends AppCompatActivity {
                     "id",
                     "pl.dela.michal.weathertoday");
             TextView txt = (TextView) findViewById(txtressourceId);
-            txt.setText(weatherArrayList.get(i).getIconPhrase()  + "\nProbability:\n" + weatherArrayList.get(i).getPrecipitationProbability());
+            txt.setTextSize(12);
+            txt.setText(weatherArrayList.get(i).getIconPhrase()  + getString(R.string.Probability) + weatherArrayList.get(i).getPrecipitationProbability());
             int txtressourceIddate = getResources().getIdentifier(
                     "textViewDay"+i,
                     "id",

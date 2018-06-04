@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType = "centerCrop"
-            app:srcCompat="@drawable/background8" />
+            app:srcCompat="@drawable/background6" />
     </FrameLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,13 +40,13 @@
                             android:layout_weight="1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Weather conditions for Zabierzów" />
+                            android:text="@string/forecastTittle" />
                         <TextView
                             android:textSize="15dp"
                             android:layout_weight="0.3"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Weather for 12 Hours:\n red line - temperature" />
+                            android:text="@string/Title12forecast" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -60,14 +60,14 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:text="Back" />
+                        android:text="@string/backButton" />
                     <Button
                         android:id="@+id/UpdateBtn"
                         android:background="@android:color/transparent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Update" />
+                        android:text="@string/updateButton" />
                     </LinearLayout>
 
                 </LinearLayout>

@@ -22,7 +22,6 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MenuActivity.this,MainActivity.class));
-
             }
         });
         LinearLayout clickButton1 = (LinearLayout) findViewById(R.id.layout12hours);
@@ -31,7 +30,6 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MenuActivity.this,HourForecast.class));
-
             }
         });
         LinearLayout clickButton2 = (LinearLayout) findViewById(R.id.layout24history);
@@ -40,7 +38,14 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MenuActivity.this,History24Hours.class));
+            }
+        });
+        LinearLayout clickButton3 = (LinearLayout) findViewById(R.id.layoutSettings);
+        clickButton3.setOnClickListener( new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MenuActivity.this,UserSettingActivity.class));
             }
         });
     }

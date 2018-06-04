@@ -12,15 +12,20 @@ import java.util.Scanner;
 
 public class NetworkUtils {
     private final static String WEATHER_BASE_URL_5DAYS = "http://dataservice.accuweather.com/forecasts/v1/daily/5day/";
-    private final static String WEATHER_BASE_URL_15DAYS = "http://dataservice.accuweather.com/forecasts/v1/daily/5day/";
-    private static String PLACE_ID = "274433";
-    private final static String APIKEY = "murcs4qu1CJN4exGWaGMoyqh3X1eQrPh";
+    private final static String WEATHER_BASE_URL_12HOUR_FORECAST = "http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/";
+    private final static String WEATHER_BASE_URL_24HOUR_HISTORICAL_FORECAST1 = "http://dataservice.accuweather.com/currentconditions/v1/";
+    private final static String WEATHER_BASE_URL_24HOUR_HISTORICAL_FORECAST2 = "/historical/24";
+    private final static String LANGUAGE_PARAM = "language";
+    private final static String API_KEY = "murcs4qu1CJN4exGWaGMoyqh3X1eQrPh";
     private final static String PARAM_METRIC = "metric";
     private final static String METRIC_VALUE = "true";
+    private static String LANGUAGE_VALUE = "pl-PL";
+    private static String PLACE_ID = "274433";
 
     public static URL buildUrlForWeather5Days() {
         Uri buildUri = Uri.parse(WEATHER_BASE_URL_5DAYS + PLACE_ID).buildUpon()
-                .appendQueryParameter("apikey",APIKEY)
+                .appendQueryParameter("apikey",API_KEY)
+                .appendQueryParameter(LANGUAGE_PARAM,LANGUAGE_VALUE)
                 .appendQueryParameter(PARAM_METRIC,METRIC_VALUE)
                 .build();
         URL url = null ;
@@ -31,9 +36,24 @@ public class NetworkUtils {
         }
         return url;
     }
-    public static URL buildUrlForWeather15Days() {
-        Uri buildUri = Uri.parse(WEATHER_BASE_URL_15DAYS + PLACE_ID).buildUpon()
-                .appendQueryParameter("apikey",APIKEY)
+    public static URL buildUrlForWeather12Hours() {
+        Uri buildUri = Uri.parse(WEATHER_BASE_URL_12HOUR_FORECAST + PLACE_ID).buildUpon()
+                .appendQueryParameter("apikey",API_KEY)
+                .appendQueryParameter(LANGUAGE_PARAM,LANGUAGE_VALUE)
+                .appendQueryParameter(PARAM_METRIC,METRIC_VALUE)
+                .build();
+        URL url = null ;
+        try{
+            url = new URL(buildUri.toString());
+        }catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return url;
+    }
+    public static URL buildUrlForWeather24HistoricalHours() {
+        Uri buildUri = Uri.parse(WEATHER_BASE_URL_24HOUR_HISTORICAL_FORECAST1 + PLACE_ID + WEATHER_BASE_URL_24HOUR_HISTORICAL_FORECAST2).buildUpon()
+                .appendQueryParameter("apikey",API_KEY)
+                .appendQueryParameter(LANGUAGE_PARAM,LANGUAGE_VALUE)
                 .appendQueryParameter(PARAM_METRIC,METRIC_VALUE)
                 .build();
         URL url = null ;

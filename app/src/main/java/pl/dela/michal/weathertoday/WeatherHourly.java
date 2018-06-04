@@ -1,43 +1,22 @@
 package pl.dela.michal.weathertoday;
 
-public class Weather {
+public class WeatherHourly {
     String date;
-    String minTemp;
-    String maxTemp;
+    String Temperature;
     String link;
     String Icon;
     String IconPhrase;
-    String IconNigh;
-    String IconPhraseNight;
-    Weather(){};
-    Weather(String date,String min,String max,String link){
-        this.date = date;
-        this.minTemp = min;
-        this.maxTemp = max;
-        this.link = link;
-    }
+    String PrecipitationProbability;
+    WeatherHourly(){};
     public String getDate() {
         return date.substring(5,10);
+    }
+    public String getHour() {
+        return date.substring(11,17);
     }
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public String getMinTemp() {
-        return minTemp;
-    }
-
-    public void setMinTemp(String minTemp) {
-        this.minTemp = minTemp;
-    }
-
-    public String getMaxTemp() {
-        return maxTemp;
-    }
-
-    public void setMaxTemp(String maxTemp) {
-        this.maxTemp = maxTemp;
     }
 
     public String getLink() {
@@ -62,5 +41,18 @@ public class Weather {
 
     public void setIconPhrase(String iconPhrase) {
         IconPhrase = iconPhrase;
+    }
+
+    public String getTemperature() {
+        return Temperature;
+    }
+    public void setTemperature(String temperature) {
+        Temperature = temperature;
+    }
+    public String getPrecipitationProbability() {
+        return PrecipitationProbability + "%";
+    }
+    public void setPrecipitationProbability(String precipitationProbability) {
+        PrecipitationProbability = precipitationProbability;
     }
 }

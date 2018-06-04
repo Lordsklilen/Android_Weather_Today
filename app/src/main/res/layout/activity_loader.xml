@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoaderActivity">
+    <ImageView
+        android:id="@+id/imageView24"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/loaderimg" />
+    <TextView
+        android:layout_width="204dp"
+        android:layout_height="17dp"
+        android:textColor="@android:color/white"
+        android:text="Made by MIchał Dela"
+        tools:layout_editor_absoluteX="234dp"
+        tools:layout_editor_absoluteY="531dp" />
+
+
+</android.support.constraint.ConstraintLayout>

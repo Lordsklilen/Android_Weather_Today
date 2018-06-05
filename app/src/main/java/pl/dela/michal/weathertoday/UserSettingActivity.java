@@ -13,6 +13,7 @@ import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.Locale;
 
@@ -50,5 +51,6 @@ public class UserSettingActivity extends PreferenceActivity {
         Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+
     }
 }

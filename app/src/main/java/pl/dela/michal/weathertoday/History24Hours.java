@@ -76,7 +76,6 @@ public class History24Hours extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Log.i("url",weatherSearchResults.toString());
             return weatherSearchResults;
         }
         @Override

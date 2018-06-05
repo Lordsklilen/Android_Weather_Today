@@ -32,12 +32,12 @@ import static pl.dela.michal.weathertoday.NetworkUtils.getIcon;
 public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Weather> weatherArrayList = new ArrayList<Weather>();
-   // private String FAKE_JSON5DAYS = "{\"Headline\":{\"EffectiveDate\":\"2018-06-03T08:00:00+02:00\",\"EffectiveEpochDate\":1528005600,\"Severity\":4,\"Text\":\"Thunderstorms in the area Sunday morning through Sunday evening; storms can cause flash flooding\",\"Category\":\"thunderstorm\",\"EndDate\":\"2018-06-04T02:00:00+02:00\",\"EndEpochDate\":1528070400,\"MobileLink\":\"http://m.accuweather.com/en/pl/zabierzow/274433/extended-weather-forecast/274433?unit=c&lang=en-us\",\"Link\":\"http://www.accuweather.com/en/pl/zabierzow/274433/daily-weather-forecast/274433?unit=c&lang=en-us\"},\"DailyForecasts\":[{\"Date\":\"2018-06-03T07:00:00+02:00\",\"EpochDate\":1528002000,\"Temperature\":{\"Minimum\":{\"Value\":13.8,\"Unit\":\"C\",\"UnitType\":17},\"Maximum\":{\"Value\":23.6,\"Unit\":\"C\",\"UnitType\":17}},\"Day\":{\"Icon\":16,\"IconPhrase\":\"Mostly cloudy w/ t-storms\"},\"Night\":{\"Icon\":41,\"IconPhrase\":\"Partly cloudy w/ t-storms\"},\"Sources\":[\"AccuWeather\"],\"MobileLink\":\"http://m.accuweather.com/en/pl/zabierzow/274433/daily-weather-forecast/274433?day=1&unit=c&lang=en-us\",\"Link\":\"http://www.accuweather.com/en/pl/zabierzow/274433/daily-weather-forecast/274433?day=1&unit=c&lang=en-us\"},{\"Date\":\"2018-06-04T07:00:00+02:00\",\"EpochDate\":1528088400,\"Temperature\":{\"Minimum\":{\"Value\":13.2,\"Unit\":\"C\",\"UnitType\":17},\"Maximum\":{\"Value\":25.7,\"Unit\":\"C\",\"UnitType\":17}},\"Day\":{\"Icon\":17,\"IconPhrase\":\"Partly sunny w/ t-storms\"},\"Night\":{\"Icon\":36,\"IconPhrase\":\"Intermittent clouds\"},\"Sources\":[\"AccuWeather\"],\"MobileLink\":\"http://m.accuweather.com/en/pl/zabierzow/274433/daily-weather-forecast/274433?day=2&unit=c&lang=en-us\",\"Link\":\"http://www.accuweather.com/en/pl/zabierzow/274433/daily-weather-forecast/274433?day=2&unit=c&lang=en-us\"},{\"Date\":\"2018-06-05T07:00:00+02:00\",\"EpochDate\":1528174800,\"Temperature\":{\"Minimum\":{\"Value\":10.0,\"Unit\":\"C\",\"UnitType\":17},\"Maximum\":{\"Value\":24.9,\"Unit\":\"C\",\"UnitType\":17}},\"Day\":{\"Icon\":17,\"IconPhrase\":\"Partly sunny w/ t-storms\"},\"Night\":{\"Icon\":35,\"IconPhrase\":\"Partly cloudy\"},\"Sources\":[\"AccuWeather\"],\"MobileLink\":\"http://m.accuweather.com/en/pl/zabierzow/274433/daily-weather-forecast/274433?day=3&unit=c&lang=en-us\",\"Link\":\"http://www.accuweather.com/en/pl/zabierzow/274433/daily-weather-forecast/274433?day=3&unit=c&lang=en-us\"},{\"Date\":\"2018-06-06T07:00:00+02:00\",\"EpochDate\":1528261200,\"Temperature\":{\"Minimum\":{\"Value\":8.7,\"Unit\":\"C\",\"UnitType\":17},\"Maximum\":{\"Value\":20.5,\"Unit\":\"C\",\"UnitType\":17}},\"Day\":{\"Icon\":2,\"IconPhrase\":\"Mostly sunny\"},\"Night\":{\"Icon\":36,\"IconPhrase\":\"Intermittent clouds\"},\"Sources\":[\"AccuWeather\"],\"MobileLink\":\"http://m.accuweather.com/en/pl/zabierzow/274433/daily-weather-forecast/274433?day=4&unit=c&lang=en-us\",\"Link\":\"http://www.accuweather.com/en/pl/zabierzow/274433/daily-weather-forecast/274433?day=4&unit=c&lang=en-us\"},{\"Date\":\"2018-06-07T07:00:00+02:00\",\"EpochDate\":1528347600,\"Temperature\":{\"Minimum\":{\"Value\":13.6,\"Unit\":\"C\",\"UnitType\":17},\"Maximum\":{\"Value\":24.8,\"Unit\":\"C\",\"UnitType\":17}},\"Day\":{\"Icon\":4,\"IconPhrase\":\"Intermittent clouds\"},\"Night\":{\"Icon\":34,\"IconPhrase\":\"Mostly clear\"},\"Sources\":[\"AccuWeather\"],\"MobileLink\":\"http://m.accuweather.com/en/pl/zabierzow/274433/daily-weather-forecast/274433?day=5&unit=c&lang=en-us\",\"Link\":\"http://www.accuweather.com/en/pl/zabierzow/274433/daily-weather-forecast/274433?day=5&unit=c&lang=en-us\"}]}";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        logAllSharedPreferences();
         SharedPreferences storage = getSharedPreferences("Data", 0);
         String JsonData = storage.getString("5days", "0");
         if(JsonData.equals("0")){
@@ -53,12 +53,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-               // startActivity(new Intent(MainActivity.this,MenuActivity.class));
             }
         });
         Button updateBtn = (Button) findViewById(R.id.UpdateBtn);
         updateBtn.setOnClickListener( new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 URL weatherUrl = NetworkUtils.buildUrlForWeather5Days();
@@ -80,9 +78,10 @@ public class MainActivity extends AppCompatActivity {
             try {
                 weatherSearchResults = NetworkUtils.getResponseFromHttpUrl(weatherUrl);
             } catch (IOException e) {
+                //error catch
+
                 e.printStackTrace();
             }
-            Log.i("url main",weatherSearchResults.toString());
             return weatherSearchResults;
         }
         @Override
@@ -193,5 +192,20 @@ public class MainActivity extends AppCompatActivity {
         graph.getViewport().setScalable(true);
         graph.getViewport().setScalableY(true);
 
+    }
+
+    private void logAllSharedPreferences(){
+
+        SharedPreferences storage = getSharedPreferences("Data", 0);
+        Log.i("pref first use", storage.getString("firstUsage", "0"));
+        Log.i("pref 5days", getSubstring(storage.getString("5days", "0")));
+        Log.i("pref 12hours", getSubstring(storage.getString("12hours", "0")));
+        Log.i("pref 24hours", getSubstring(storage.getString("24hourhistory", "0")));
+        Log.i("pref language", storage.getString("language", "0"));
+    }
+    private String getSubstring(String tmp){
+        if(!tmp.equals("0"))
+            return tmp.subSequence(0,80).toString();
+        return "0";
     }
 }

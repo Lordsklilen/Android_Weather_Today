@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.widget.TextView;
 
 import java.util.Locale;
 
@@ -24,15 +25,15 @@ public class LoaderActivity extends AppCompatActivity {
         String firstUsage = storage.getString("firstUsage", "0");
         //nowości
 
-        SharedPreferences.Editor storageEditora = storage.edit();
-        storageEditora.putString("language", "pl").commit();
         //starości
         if(firstUsage.equals("0")){
             SharedPreferences.Editor storageEditor = storage.edit();
-            storageEditor.putString("5days", FAKE_JSON5DAYS).commit();
-            storageEditor.putString("12hours", FAKE_JSON12_HOURS).commit();
-            storageEditor.putString("24hourhistory", FAKE_JSON24_HISTORICAL_HOURS).commit();
-            storageEditor.putString("language", "pl").commit();
+            storageEditor.putString("5days", FAKE_JSON5DAYS);
+            storageEditor.putString("12hours", FAKE_JSON12_HOURS);
+            storageEditor.putString("24hourhistory", FAKE_JSON24_HISTORICAL_HOURS);
+            storageEditor.putString("language", "pl");
+            storageEditor.putString("firstUsage", "1");
+            storageEditor.apply();
             Log.i("init","storage has been initiated");
         }
         else {
@@ -60,6 +61,7 @@ public class LoaderActivity extends AppCompatActivity {
         h.postDelayed(c, 1100);
     }
     public void setLocale(String lang) {
+        Log.i("init","language has been changed");
         Locale myLocale = new Locale(lang);
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
@@ -73,4 +75,5 @@ public class LoaderActivity extends AppCompatActivity {
     void closeActivity(){
         finish();
     }
+
 }

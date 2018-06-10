@@ -37,6 +37,16 @@ public class UserSettingActivity extends PreferenceActivity {
                 SharedPreferences.Editor storageEditor = storage.edit();
                 storageEditor.putString("language",value).commit();
                 setLocale(value);
+                NetworkUtils.UpdatePreferences(UserSettingActivity.context);
+                return true;
+            }
+        });
+        Preference localizationBtn =  (Preference) findPreference("LocationBtn");
+        localizationBtn.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                startActivity(new Intent(UserSettingActivity.this,LoccationSettingsActivity.class));
                 return true;
             }
         });

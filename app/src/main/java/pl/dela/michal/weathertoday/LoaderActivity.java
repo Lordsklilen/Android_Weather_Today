@@ -24,7 +24,9 @@ public class LoaderActivity extends AppCompatActivity {
         SharedPreferences storage = getSharedPreferences("Data", 0);
         String firstUsage = storage.getString("firstUsage", "0");
         //nowości
+       // SharedPreferences.Editor storageEditor1 = storage.edit();
 
+        //storageEditor1.apply();
         //starości
         if(firstUsage.equals("0")){
             SharedPreferences.Editor storageEditor = storage.edit();
@@ -32,15 +34,21 @@ public class LoaderActivity extends AppCompatActivity {
             storageEditor.putString("12hours", FAKE_JSON12_HOURS);
             storageEditor.putString("24hourhistory", FAKE_JSON24_HISTORICAL_HOURS);
             storageEditor.putString("language", "pl");
+            storageEditor.putString("LocalizedName", "Zabierzów");
+            storageEditor.putString("Country", "Polska");
+            storageEditor.putString("AdministrativeArea", "Małopolskie");
+            storageEditor.putString("Key", "274433");
             storageEditor.putString("firstUsage", "1");
             storageEditor.apply();
             Log.i("init","storage has been initiated");
+            NetworkUtils.UpdatePreferences(this);
         }
         else {
             String lang = storage.getString("language", "0");
             if(!firstUsage.equals("0"))
                 setLocale(lang);
             Log.i("init","storage has been loaded");
+            NetworkUtils.UpdatePreferences(this);
         }
 
         Runnable r = new Runnable() {

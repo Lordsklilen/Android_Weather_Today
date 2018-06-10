@@ -10,6 +10,18 @@
     <string name="forecastTittle">Prognoza pogody dla </string>
     <string name="Title24history">Prognoza z poprzednich 24 godzin:\nCzerwona linia - temperatura</string>
     <string name="Title12forecast">Prognoza na kolejne 12 godzin\nCzerwona linia - przewidywana temperatura</string>
-    <string name="Title5daysforecast">Prognoza na kolejne 5 dni\nCzerwona linia - przewidywana maksymalna temperatura\nNiebieska linia - przewidywana minimalna temperatura</string>
-    <string name="Probability">\nPrawdopodobieństwo opadów:\n</string>
+    <string name="Title5daysforecast">Prognoza na kolejne 5 dni\nCzerwona linia - maksymalna temperatura\nNiebieska linia - minimalna temperatura</string>
+    <string name="Probability">\nOpady:\n</string>
+    <string name="ChoseLanguage">Wybierz język</string>
+    <string name="ChoseLanguageSummary">Wybierz preferowany język</string>
+    <string name="LocalizationSettings">Ustawienia lokalizacji</string>
+    <string name="title_activity_settings">Ustawienia</string>
+    <string name="positionGPS">Pobierz lokalizację z GPS</string>
+    <string name="TypeCityName">Wpisz nazwę swojego miasta:</string>
+    <string name="CityHint">Nazwa miasta</string>
+    <string name="Search">Wyszukaj</string>
+    <string name="LocalizedName">Nazwa</string>
+    <string name="Country">Kraj</string>
+    <string name="AdministrativeArea">Województwo</string>
+    <string name="Key">Klucz</string>
 </resources>

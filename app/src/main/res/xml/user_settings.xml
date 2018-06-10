@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <PreferenceCategory android:title="Settings" >
-        <EditTextPreference
-            android:title="Password"
-            android:summary="Set Your Password"
-            android:key="prefUserPassword"/>
-    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/title_activity_settings" >
 
-    <PreferenceCategory android:title="Internet Settings" >
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="prefLockScreen"
-            android:summary="Lock The Screen With Password"
-            android:title="Screen Lock" >
-        </CheckBoxPreference>
 
         <ListPreference
             android:id="@+id/ChangeLanguageButton"
@@ -24,5 +12,8 @@
             android:entries="@array/UpdateLanguage"
             android:entryValues="@array/UpdateLanguageValues"
         />
+        <Preference android:title="Change localization"
+            android:key="LocationBtn"
+            android:summary="@string/LocalizationSettings"/>
     </PreferenceCategory>
 </PreferenceScreen>

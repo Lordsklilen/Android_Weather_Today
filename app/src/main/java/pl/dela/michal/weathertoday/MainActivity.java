@@ -47,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
             Log.i("JSON",JsonData);
             parseJSON(JsonData);
         }
+        ReadPlace();
+
+
         Button clickButton = (Button) findViewById(R.id.backBtn);
         clickButton.setOnClickListener( new View.OnClickListener() {
 
@@ -65,6 +68,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void ReadPlace(){
+        SharedPreferences storage = getSharedPreferences("Data", 0);
+        String JsonData = storage.getString("LocalizedName", "0");
+
+        TextView txt = (TextView) findViewById(R.id.forecastTittle);
+        txt.setText(getText(R.string.forecastTittle) + " " + JsonData);
+
+    }
+
+    public ArrayList<Weather> getArrayList(){
+        return weatherArrayList;
+    }
+
     private class FetchWeatherDetails extends AsyncTask<URL,Void,String>{
 
         @Override
@@ -97,6 +114,9 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(weatherSearchResults);
         }
     }
+
+
+
 
     private ArrayList<Weather> parseJSON(String weatherSearchResults) {
         if(weatherArrayList!=null){

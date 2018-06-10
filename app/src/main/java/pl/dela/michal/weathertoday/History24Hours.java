@@ -42,6 +42,7 @@ public class History24Hours extends AppCompatActivity {
             Log.i("JSON",JsonData);
             parseJSON(JsonData);
         }
+        ReadPlace();
         Button clickButton = (Button) findViewById(R.id.backBtn);
             clickButton.setOnClickListener( new View.OnClickListener() {
 
@@ -60,6 +61,14 @@ public class History24Hours extends AppCompatActivity {
                 new FetchWeatherDetails().execute(weatherUrl);
             }
         });
+    }
+    private void ReadPlace(){
+        SharedPreferences storage = getSharedPreferences("Data", 0);
+        String JsonData = storage.getString("LocalizedName", "0");
+
+        TextView txt = (TextView) findViewById(R.id.forecastTittle);
+        txt.setText(getText(R.string.forecastTittle) + " " + JsonData);
+
     }
     private class FetchWeatherDetails extends AsyncTask<URL,Void,String> {
 

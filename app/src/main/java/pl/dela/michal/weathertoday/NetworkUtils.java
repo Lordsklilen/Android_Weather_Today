@@ -1,5 +1,7 @@
 package pl.dela.michal.weathertoday;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 
@@ -14,6 +16,8 @@ public class NetworkUtils {
     private final static String WEATHER_BASE_URL_5DAYS = "http://dataservice.accuweather.com/forecasts/v1/daily/5day/";
     private final static String WEATHER_BASE_URL_12HOUR_FORECAST = "http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/";
     private final static String WEATHER_BASE_URL_24HOUR_HISTORICAL_FORECAST1 = "http://dataservice.accuweather.com/currentconditions/v1/";
+    private final static String WEATHER_BASE_URL_GEOPOSITION = "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search";
+    private final static String WEATHER_BASE_URL_CITY_POSITION = "http://dataservice.accuweather.com/locations/v1/cities/search";
     private final static String WEATHER_BASE_URL_24HOUR_HISTORICAL_FORECAST2 = "/historical/24";
     private final static String LANGUAGE_PARAM = "language";
     private final static String API_KEY = "murcs4qu1CJN4exGWaGMoyqh3X1eQrPh";
@@ -21,6 +25,22 @@ public class NetworkUtils {
     private final static String METRIC_VALUE = "true";
     private static String LANGUAGE_VALUE = "pl-PL";
     private static String PLACE_ID = "274433";
+    //private static String POSITION_VALUE = "50.1162713,19.7784001";
+    private static String POSITION_PARAM = "q";
+
+    public static void UpdatePreferences(Context ctxt){
+        SharedPreferences storage = ctxt.getSharedPreferences("Data", 0);
+        String localizedname = storage.getString("LocalizedName", "0");
+        String language = storage.getString("language", "0");
+        if(!language.equals("0")){
+            LANGUAGE_VALUE = language;
+        }
+        String key = storage.getString("Key", "0");
+        if(!key.equals("0")){
+            PLACE_ID = key;
+        }
+    }
+
 
     public static URL buildUrlForWeather5Days() {
         Uri buildUri = Uri.parse(WEATHER_BASE_URL_5DAYS + PLACE_ID).buildUpon()
@@ -64,6 +84,36 @@ public class NetworkUtils {
         }
         return url;
     }
+    public static URL buildUrlForLatAndLongLocalization(double lat,double lon) {
+        String Position_value = String.valueOf(lat) + "," + String.valueOf(lon);
+        Uri buildUri = Uri.parse(WEATHER_BASE_URL_GEOPOSITION).buildUpon()
+                .appendQueryParameter("apikey",API_KEY)
+                .appendQueryParameter(LANGUAGE_PARAM,LANGUAGE_VALUE)
+                .appendQueryParameter(POSITION_PARAM,Position_value)
+                .build();
+        URL url = null ;
+        try{
+            url = new URL(buildUri.toString());
+        }catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return url;
+    }
+    public static URL buildUrlForCityPositionSearch(String text) {
+        Uri buildUri = Uri.parse(WEATHER_BASE_URL_CITY_POSITION).buildUpon()
+                .appendQueryParameter("apikey",API_KEY)
+                .appendQueryParameter(LANGUAGE_PARAM,LANGUAGE_VALUE)
+                .appendQueryParameter(POSITION_PARAM,text)
+                .build();
+        URL url = null ;
+        try{
+            url = new URL(buildUri.toString());
+        }catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return url;
+    }
+
     public static String getResponseFromHttpUrl(URL url ) throws IOException {
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         try{

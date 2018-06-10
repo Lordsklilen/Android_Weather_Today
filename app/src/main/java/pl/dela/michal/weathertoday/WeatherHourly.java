@@ -8,11 +8,19 @@ public class WeatherHourly {
     String IconPhrase;
     String PrecipitationProbability;
     WeatherHourly(){};
+    WeatherHourly(String a,String b, String c, String d, String e, String f){
+        date = a;
+        Temperature = b;
+        link =c;
+        Icon = d;
+        IconPhrase = e;
+        PrecipitationProbability = f;
+    }
     public String getDate() {
         return date.substring(5,10);
     }
     public String getHour() {
-        return date.substring(11,17);
+        return date.substring(11,16);
     }
 
     public void setDate(String date) {

@@ -20,12 +20,11 @@ public class NetworkUtils {
     private final static String WEATHER_BASE_URL_CITY_POSITION = "http://dataservice.accuweather.com/locations/v1/cities/search";
     private final static String WEATHER_BASE_URL_24HOUR_HISTORICAL_FORECAST2 = "/historical/24";
     private final static String LANGUAGE_PARAM = "language";
-    private final static String API_KEY = "murcs4qu1CJN4exGWaGMoyqh3X1eQrPh";
+    private final static String API_KEY = "";
     private final static String PARAM_METRIC = "metric";
     private final static String METRIC_VALUE = "true";
     private static String LANGUAGE_VALUE = "pl-PL";
     private static String PLACE_ID = "274433";
-    //private static String POSITION_VALUE = "50.1162713,19.7784001";
     private static String POSITION_PARAM = "q";
 
     public static void UpdatePreferences(Context ctxt){

@@ -90,8 +90,6 @@ public class LoccationSettingsActivity extends AppCompatActivity  {
                 lattitude = location.getLatitude();
                 longitude = location.getLongitude();
                 Log.i("GPS:", "Your Location is - \nLat: " + lattitude + "\nLong: " + longitude);
-               // TextView InformationAboutPlace = (TextView) findViewById(R.id.InformationAboutPlace);
-              //  InformationAboutPlace.setText("Your Location is - \nLat: " + lattitude + "\nLong: " + longitude);
                 URL weatherUrl = NetworkUtils.buildUrlForLatAndLongLocalization(lattitude,longitude);
                 Log.i("url",weatherUrl.toString());
                 new FetchPlaceDetails().execute(weatherUrl);
@@ -148,9 +146,6 @@ public class LoccationSettingsActivity extends AppCompatActivity  {
         @Override
         protected void onPostExecute(String weatherSearchResults) {
             if(weatherSearchResults != null && !weatherSearchResults.equals("")){
-                // SharedPreferences storage = getSharedPreferences("Data", 0);
-                // SharedPreferences.Editor storageEditor = storage.edit();
-                // storageEditor.putString("place", weatherSearchResults).commit();
                 Log.i("Saved" , weatherSearchResults);
                 parseJSONCities((weatherSearchResults));
             }
@@ -248,7 +243,7 @@ public class LoccationSettingsActivity extends AppCompatActivity  {
         storageEditor1.apply();
         NetworkUtils.UpdatePreferences(this);
         //Uncoment to download all data after changing localization
-        //reDownloadJsons();
+        reDownloadJsons();
     }
     void LoadNewPosition(){
         SharedPreferences storage = getSharedPreferences("Data", 0);
@@ -296,8 +291,6 @@ public class LoccationSettingsActivity extends AppCompatActivity  {
             try {
                 weatherSearchResults = NetworkUtils.getResponseFromHttpUrl(weatherUrl);
             } catch (IOException e) {
-                //error catch
-
                 e.printStackTrace();
             }
             return weatherSearchResults;

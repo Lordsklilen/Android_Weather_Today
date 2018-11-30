@@ -95,8 +95,6 @@ public class MainActivity extends AppCompatActivity {
             try {
                 weatherSearchResults = NetworkUtils.getResponseFromHttpUrl(weatherUrl);
             } catch (IOException e) {
-                //error catch
-
                 e.printStackTrace();
             }
             return weatherSearchResults;
@@ -164,7 +162,6 @@ public class MainActivity extends AppCompatActivity {
         DataPoint[] pointsMax = new DataPoint[5];
         String []dates= new String[5];
         for(int i =0;i< weatherArrayList.size();i++){
-           // series.appendData(new DataPoint(i,Integer.valueOf(weatherArrayList.get(i).getMinTemp())));
             pointsMin [i] = new DataPoint(i,Double.valueOf(weatherArrayList.get(i).getMinTemp()));
             pointsMax [i] = new DataPoint(i,Double.valueOf(weatherArrayList.get(i).getMaxTemp()));
             dates[i] = weatherArrayList.get(i).getDate();
@@ -211,7 +208,6 @@ public class MainActivity extends AppCompatActivity {
 
         graph.getViewport().setScalable(true);
         graph.getViewport().setScalableY(true);
-
     }
 
     private void logAllSharedPreferences(){

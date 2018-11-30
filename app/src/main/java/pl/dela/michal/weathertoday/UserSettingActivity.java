@@ -25,7 +25,6 @@ public class UserSettingActivity extends PreferenceActivity {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.user_settings);
         context = this;
-        //ChangeLanguageButton
         ListPreference languagechange =  (ListPreference) findPreference("ChangeLanguageButton");
         languagechange.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             public boolean onPreferenceChange(Preference preference, Object newValue) {
